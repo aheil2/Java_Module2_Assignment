@@ -1,5 +1,6 @@
 package edu.wctc;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
@@ -12,7 +13,7 @@ public class Player {
     }
     public Player() {
         score = 0;
-        inventory = java.util.Collections.emptyList();
+        inventory = new ArrayList<String>();
     }
 
     public void addToInventory() {
