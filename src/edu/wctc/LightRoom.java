@@ -1,6 +1,6 @@
 package edu.wctc;
 
-public class LightRoom extends Room {
+public class LightRoom extends Room implements Lootable {
     public LightRoom() {
         super("Light Room");
     }

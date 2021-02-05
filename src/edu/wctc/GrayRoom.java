@@ -1,6 +1,6 @@
 package edu.wctc;
 
-public class GrayRoom extends Room{
+public class GrayRoom extends Room implements Interactable{
     public GrayRoom() {
         super("Gray Room");
     }

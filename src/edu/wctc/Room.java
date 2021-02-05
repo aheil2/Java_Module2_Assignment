@@ -10,7 +10,7 @@ public abstract class Room {
 
     public abstract String getDescription();
 
-    // ???
+    // ??? is this even right?
     //A method named getAdjoiningRoom that accepts a char argument for the direction. If this Room is connected to another Room in the given direction, that Room is returned. Otherwise, return null.
     public Room getAdjoiningRoom() {
         if (north != null) return this.north;
@@ -19,13 +19,13 @@ public abstract class Room {
         if (west != null) return  this.west;
         if (up != null) return  this.up;
         if (down != null) return  this.down;
-        else return false;
+        else return null;
     }
 //
 //    //A method named getExits that returns a String. The String should be a list of all of the directions the Player could exit from this Room to another Room.
-//    public String getExits() {
-        //if current room has/implements Exit interface, return exitable rooms
-//    }
+    public String getExits() {
+        return toString();
+    }
 
     //A method named getName that returns the name of the Room.
     public String getName() {
@@ -33,9 +33,9 @@ public abstract class Room {
     }
 
     //A method named isValidDirection that accepts a char argument for the direction. If this Room is connected to another Room in the given direction, return true. Otherwise, return false.
-    public boolean isValidDirection() {
-
-    }
+//    public boolean isValidDirection() {
+//
+//    }
 
     //Setters
     public void setNorth(Room north) {

@@ -1,6 +1,6 @@
 package edu.wctc;
 
-public class DarkRoom extends Room {
+public class DarkRoom extends Room implements Interactable {
     public DarkRoom() {
         super("Dark Room");
     }

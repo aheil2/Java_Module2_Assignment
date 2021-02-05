@@ -1,6 +1,8 @@
 package edu.wctc;
 
 
+import java.util.Scanner;
+
 public class Maze {
     private Room currentRoom;
     private Player player;
@@ -20,31 +22,48 @@ public class Maze {
         Room exit = new EscapeRoom();
 
         dark.setNorth(dark);
-        dark.setEast(dark);
-        dark.setSouth(dark);
-        dark.setWest(dark);
         dark.setUp(gray);
         gray.setDown(gray);
-        gray.setNorth(gray);
-        gray.setEast(gray);
         gray.setSouth(gray);
-        gray.setWest(gray);
         gray.setUp(light);
         light.setDown(gray);
-        light.setNorth(light);
-        light.setEast(light);
-        light.setSouth(light);
         light.setWest(light);
         light.setUp(exit);
 
-
         currentRoom = dark;
+
+        System.out.println("You have entered " + currentRoom.getName());
+        System.out.println(getCurrentRoomDescription());
+        System.out.println("1. Interact with room");
+        System.out.println("2. Loot room");
+        System.out.println("3. Check doors");
+        System.out.println("4. Take escape route");
+        Scanner keyboard = new Scanner(System.in);
+        int choice = Integer.parseInt(keyboard.nextLine());
+        switch (choice) {
+            case 1:
+                System.out.println(interactWithCurrentRoom());
+                break;
+            case 2:
+                System.out.println(lootCurrentRoom());
+                break;
+            case 3:
+                System.out.println(getCurrentRoomExits());;
+                break;
+            case 4:
+                System.out.println(exitCurrentRoom());;
+                break;
+        }
+
 
     }
     //A method named exitCurrentRoom that returns a String. If the currentRoom is an Exit, it returns the result of calling exit() on the Room. If not, it returns a message that the current room is not exitable.
     public String exitCurrentRoom() {
         if (currentRoom instanceof Exit) {
             isFinished = true;
+            System.out.println("Score: " + player.getScore());
+            System.out.println("Inventory: " + player.getInventory());
+            System.out.println("Goodbye");
             return ((Exit)currentRoom).exit(player);
         }
         return "Current room is not exitable.";
@@ -64,16 +83,9 @@ public class Maze {
         return "Current room is not lootable.";
     }
     //A method named move that accepts a char argument for the direction and returns a boolean. If the direction is valid to move from within the currentRoom, the adjoining Room becomes the new currentRoom and the method returns true. If not, the method returns false.
-    public boolean move() {
-        Room temp = currentRoom.getAdjoiningRoom();
-        if(temp != null) {
-            currentRoom = temp;
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
+//    public boolean move() {
+//
+//    }
     
     public String getPlayerInventory() {
         return String.valueOf(player.getInventory());
@@ -84,9 +96,9 @@ public class Maze {
     public String getCurrentRoomDescription() {
         return currentRoom.getDescription();
     }
-//    public String getCurrentRoomExits() {
-//        //
-//    }
+    public String getCurrentRoomExits() {
+        return currentRoom.getExits();
+    }
     public boolean isFinished() {
         return true;
     }

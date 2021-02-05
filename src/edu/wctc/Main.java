@@ -10,11 +10,6 @@ public class Main {
 	    Maze maze = new Maze();
         Scanner keyboard = new Scanner(System.in);
 
-
-        for (int i = 0; i < 1; i++) {
-            System.out.println(maze);
-
-
-        }
+        System.out.println(maze);
     }
 }
